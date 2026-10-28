@@ -1,0 +1,12 @@
+{
+  "name": "gpu-architecture-3d",
+  "version": "1.0.0",
+  "private": true,
+  "description": "用 Three.js 交互式拆解 NVIDIA 与 AMD 显卡架构",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "three": "0.169.0"
+  }
+}

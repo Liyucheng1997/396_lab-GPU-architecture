@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>显卡架构 3D</title>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('gpu3d-theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">显卡架构 3D</span>
+        <span class="brand-sub">NVIDIA Blackwell · AMD RDNA</span>
+      </div>
+      <div class="top-actions">
+        <button class="chip" id="btn-labels" title="显示 / 隐藏标签">标签</button>
+        <button class="chip" id="btn-rotate" title="自动旋转">旋转</button>
+        <button class="chip" id="btn-reset" title="回到默认视角">复位视角</button>
+        <button class="icon-btn" id="btn-theme" title="切换深色 / 浅色">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </header>
+    <div class="layout">
+      <nav class="sidebar" id="nav"></nav>
+      <main class="stage" id="stage">
+        <div class="hint" id="hint">拖动旋转 · 滚轮缩放 · 右键平移 · 悬停查看部件</div>
+        <div class="tooltip" id="tooltip"></div>
+        <div class="loading" id="loading"><div class="spinner"></div></div>
+      </main>
+      <aside class="panel" id="panel">
+        <div class="panel-scroll">
+          <div class="panel-eyebrow" id="p-eyebrow"></div>
+          <h1 class="panel-title" id="p-title"></h1>
+          <div class="panel-controls" id="p-controls"></div>
+          <div class="panel-body" id="p-body"></div>
+          <div class="legend" id="p-legend"></div>
+          <div class="pager">
+            <button class="btn btn-sm" id="btn-prev">上一章</button>
+            <button class="btn btn-sm btn-primary" id="btn-next">下一章</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
